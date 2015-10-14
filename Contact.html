@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>تماس با ما</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="des/css/concat.min.css">
+  
+  <script src="src/js/jquery.min.js"></script>
+  <script src="src/js/bootstrap.min.js"></script>
+  <script src= "src/js/angular.min.js"></script>  
+  <script src="src/js/angular-messages.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<div class="container container1" lang="fa" dir="rtl">
+		<div class="row content" style="margin:8%;">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-push-3 col-md-push-3 divmain">
+				<form name="myForm" ng-submit="subm()" class="form"  novalidate >
+					<fieldset>
+						<legend class="text-right"><h3 class="text-right legend" >
+                        							با ما در تماس باشید
+                                                    </h3></legend>
+						<div class="form-group">
+						    <div class="row">
+						      <input type="text" class="form-control" ng-trim="true" name="name" ng-model="name" placeholder="نام" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+							  <input type="text" ng-pattern="/^(09|\+989)\d{9}$/" required ng-trim="true" class="form-control number" name="mobile" ng-model="mobile" placeholder="شماره موبایل: 09121233456">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="row">
+								<input type="email" my-dir err="emailerr" required ng-trim="true" align="right" style="direction:rtl" lang="fa" class="form-control" name="email" ng-model="email" placeholder="ایمیل" >
+							</div>
+						</div>
+                        <div class="form-group">
+							<div class="row">
+                            	<textarea required rows="5" align="right" ng-trim="true" dir="rtl" lang="fa" class="form-control" name="msg" ng-model="msg" placeholder="متن پیام">
+                                </textarea>
+							</div>
+						</div>
+						<div class="row">
+							<input id="submit" type="submit" value="ثبت" class="btn btn-success" ng-disabled="check()">
+                        </div>
+                        <div ng-messages="myForm.name.$error" ng-if="myForm.name.$touched">
+                            <p ng-message="required" class="notify">نام الزامی است.</p>
+                        </div>
+                        <div class="help-block" ng-messages="myForm.email.$error" ng-if="myForm.email.$touched && myForm.mobile.$error.required ">
+                            <p ng-message="required" class="notify">ایمیل یا موبایل الزامی است.</p>
+                        </div>
+                        <div class="help-block" ng-messages="myForm.mobile.$error" ng-if="myForm.mobile.$touched && myForm.email.$error.required ">
+                            <p ng-message="required" class="notify">موبایل یا ایمیل الزامی است.</p>
+                        </div>
+                         <div id="emailsh">
+                            <p class="notify">ایمیل وارد شده صحیح نیست.</p>
+                        </div>
+                        <div class="help-block" ng-messages="myForm.mobile.$error" ng-if="myForm.mobile.$touched && !myForm.mobile.$error.required">
+                            <p ng-message="pattern" class="notify">شماره موبایل وارده شده صحیح نیست.</p>
+                        </div>
+                        <div class="help-block" ng-messages="myForm.msg.$error" ng-if="myForm.msg.$touched">
+                            <p ng-message="required" class="notify">متن پیام الزامی است.</p>
+                        </div>
+					</fieldset>
+				</form>
+
+				<div class="row" style=" padding-top:5%;margin-right:7%;">
+					<div id="p1" ng-show="vr" class="alert alert-success" style="width:80%">
+	     				<a href="#"  class="pull-left" >&times;</a>
+				  		<strong> باتشکر:  </strong> پیام شما با موفقیت ثبت شد.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <script src="src/js/myscript.js"></script>
+</body>
+</html>
